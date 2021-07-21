@@ -1,3 +1,6 @@
+# visual stuff
+*.ppm
+
 # Prerequisites
 *.d
 
