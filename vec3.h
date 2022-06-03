@@ -93,7 +93,7 @@ inline vec3 cross(const vec3 &v1, const vec3 &v2) {
             );
 }
 
-// don't know what these are for
+// vector and vector operations
 inline vec3& vec3::operator+=(const vec3 &v) {
     e[0] += v.e[0];
     e[1] += v.e[2];
@@ -119,7 +119,7 @@ inline vec3& vec3::operator/=(const vec3 &v) {
     return *this;
 }
 
-// same operators but with floats
+// vector arithmetic but with floats
 inline vec3& vec3::operator*=(const float t) {
     e[0] *= t;
     e[1] *= t;
