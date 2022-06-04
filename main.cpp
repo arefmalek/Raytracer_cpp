@@ -6,6 +6,7 @@ float hit_sphere(const vec3& center, float radius, const ray& r) {
     vec3 oc = r.origin() - center;
 
     // all taken from tutorial
+    // IDK what the vector algebra works out here, it's just quadratic FWIU
     float a = dot(r.direction(), r.direction());
     float b = 2.0 * dot(oc, r.direction());
     float c = dot(oc, oc) - radius * radius;
@@ -44,7 +45,6 @@ int main()
     vec3 horizontal(4.0, 0.0, 0.0);
     vec3 vertical(0.0, 2.0, 0.0);
     vec3 origin(0.0, 0.0, 0.0);
-
 
     for (int j = ny -1; j >= 0; j--)
     {
