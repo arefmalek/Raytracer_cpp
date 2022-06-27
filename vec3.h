@@ -6,13 +6,21 @@ class vec3
 {
     public:
     vec3() {}
+
+    // origins
     vec3(float e0, float e1, float e2) {e[0] = e0; e[1] = e1; e[2] = e2;}
+
+    // xyz
     inline float x() const {return e[0];}
-    inline float y() const {return e[1];} inline float z() const {return e[2];}
+    inline float y() const {return e[1];} 
+    inline float z() const {return e[2];}
+
+    // rgb 
     inline float r() const {return e[0];}
     inline float g() const {return e[1];}
     inline float b() const {return e[2];}
 
+    // if vector is used in operation, what to give
     inline const vec3& operator+() const { return *this; }
     inline vec3 operator-() const { return vec3(-e[0], -e[1], -e[2]); }
     inline float operator[] (int i) const {return e[1];}

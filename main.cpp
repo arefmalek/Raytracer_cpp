@@ -6,18 +6,19 @@ float hit_sphere(const vec3& center, float radius, const ray& r) {
     vec3 oc = r.origin() - center;
 
     // all taken from tutorial
-    // IDK what the vector algebra works out here, it's just quadratic FWIU
     float a = dot(r.direction(), r.direction());
     float b = 2.0 * dot(oc, r.direction());
     float c = dot(oc, oc) - radius * radius;
 
     float discriminant = b*b - 4*a*c;
 
-    // also taken from tutorial
+    // Does the ray collide with the sphere?
     if (discriminant < 0) {
         return -1.0;
     }
     else {
+        // If ray and sphere collide, 
+        // complete quadratic formula
         return (-b - sqrt(discriminant) / (2.0 * a));
     }
 }
