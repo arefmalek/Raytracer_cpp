@@ -1,6 +1,8 @@
 #include <iostream>
 
-#include "ray.h"
+#include "sphere.h"
+#include "hitable_list.h"
+#include "float.h"
 
 float hit_sphere(const vec3& center, float radius, const ray& r) {
     vec3 oc = r.origin() - center;
@@ -47,6 +49,12 @@ int main()
     vec3 vertical(0.0, 2.0, 0.0);
     vec3 origin(0.0, 0.0, 0.0);
 
+    // start to include the hitable elements
+    hitable *list[2];
+    list[0] = new sphere(vec3(0,0,-1), 0.5);
+    list[1] = new sphere(vec3(0,-100.5,-1), 100);
+    hitable *world = new hitable_list(list, 2);
+
     for (int j = ny -1; j >= 0; j--)
     {
         for (int i = 0; i < nx; i++)
@@ -58,8 +66,9 @@ int main()
             if (u > 1.0 || v > 1.0) std::cout << "danger!!\n";
 
             ray r(origin, lower_left_corner + u*horizontal + v*vertical);
-            vec3 col = color(r);
 
+            vec3 p = r.point_at_parameter(2.0);
+            vec3 col = color(r);
 
             int ir = int(255.99*col[0]);
             int ig = int(255.99*col[1]);
