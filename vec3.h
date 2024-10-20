@@ -78,7 +78,7 @@ inline Vec3 operator+(const Vec3 &u, const Vec3 &v)
 
 inline Vec3 operator-(const Vec3 &u, const Vec3 &v)
 {
-    return -u + v;
+    return -v + u;
 }
 
 inline Vec3 operator*(const Vec3 &u, const Vec3 &v)
@@ -102,9 +102,9 @@ inline Vec3 operator/(const Vec3 &u, const float t)
     return u * (1 / t);
 }
 
-inline Vec3 dot(const Vec3 &u, const Vec3 &v)
+inline float dot(const Vec3 &u, const Vec3 &v)
 {
-    return Vec3(u.X() * v.X(), u.Y() * v.Y(), u.Z() * v.Z());
+    return u.X() * v.X() + u.Y() * v.Y() + u.Z() * v.Z();
 }
 
 inline Vec3 cross(const Vec3 &u, const Vec3 &v)

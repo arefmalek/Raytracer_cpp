@@ -13,7 +13,7 @@ struct Ray
     const Point3 &origin() const { return orig; }
     const Vec3 &direction() const { return linear_scale; }
 
-    Point3 at(float t)
+    Point3 at(float t) const
     {
         return orig + linear_scale * t;
     }
