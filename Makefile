@@ -1,5 +1,6 @@
 MAIN := main.cc
 PROG := prog
+CPP_Ver := c++11
 PROG_DBG := $(PROG)_dbg
 PROG_EXEC := $(PROG).out
 PROG_DBG_EXEC := $(PROG_DBG).out
@@ -12,10 +13,10 @@ img_output: $(MAIN) build
 
 build:
 	echo "====starting build===="
-	clang++ $(MAIN) -o $(PROG_EXEC)
+	clang++ -std=$(CPP_Ver) $(MAIN) -o $(PROG_EXEC)
 
-debug_build:
-	clang++ $(MAIN) -g -o $(PROG_DBG_EXEC)
+debug:
+	clang++ -std=$(CPP_Ver) $(MAIN) -g -o $(PROG_DBG_EXEC)
 
 clean:
 	rm -f *.out *.ppm
