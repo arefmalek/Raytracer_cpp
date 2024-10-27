@@ -3,21 +3,22 @@
 #include "types.h"
 #include "ray.h"
 #include "vec3.h"
+#include "sphere.h"
 
 float hit_sphere(const Point3 __restrict &sphere_center, const float radius, const Ray __restrict r)
 {
     const Vec3 origin_center = sphere_center - r.origin();
     const float a = dot(r.direction(), r.direction());
-    const float b = -2.0f * dot(r.direction(), origin_center);
+    const float h = dot(r.direction(), origin_center);
     const float c = dot(origin_center, origin_center) - radius * radius;
-    const float discriminant = b * b - 4.0f * a * c;
+    const float discriminant = h*h - a * c;
 
     if (discriminant < 0.0f)
     {
         return -1.0f;
     }
 
-    const float t = (-b - std::sqrt(discriminant)) / (2.0f * a);
+    const float t = (h - std::sqrt(discriminant)) / a;
     return t;
 }
 
@@ -65,6 +66,8 @@ int temp()
     const Point3 upper_left_viewport_corner = kCameraOrigin - Vec3(0.0f, 0.0f, kFocalLength) - (viewport_u / 2) - (viewport_v / 2);
 
     const Point3 pixel00_loc = upper_left_viewport_corner + 0.5 * (pixel_delta_u + pixel_delta_v);
+
+
 
     std::cout << "P3\n"
               << kImgWidth << " " << kImgHeight << "\n255\n";
