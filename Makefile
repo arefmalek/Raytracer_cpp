@@ -9,7 +9,7 @@ PPM_FILE := img.ppm
 img_output: $(MAIN) build
 	echo "====writing output===="
 	./$(PROG_EXEC) > $(PPM_FILE)
-	open $(PPM_FILE)
+	# open $(PPM_FILE)
 
 build:
 	echo "====starting build===="

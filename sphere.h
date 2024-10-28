@@ -1,8 +1,8 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
+#include "rtweekend.h"
 #include "hittable.h"
-#include "vec3.h"
 
 class Sphere : public hittable
 {
@@ -11,7 +11,7 @@ public:
     {
     }
 
-    bool hit(const Ray &r, const float t_min, const float t_max, hit_record &hit) const override
+    bool hit(const Ray &r, const interval ray_interval, hit_record &hit) const override
     {
         const Vec3 oc = center - r.origin();
         const float a = dot(r.direction(), r.direction());
@@ -27,10 +27,10 @@ public:
         const float sqrtd = std::sqrt(discriminant);
 
         float root = (h - sqrtd) / a;
-        if (root <= t_min || t_max <= root)
+        if (!ray_interval.contains(root))
         {
             root = (h + sqrtd) / a;
-            if (root <= t_min || t_max <= root)
+            if (!ray_interval.contains(root))
             {
                 return false;
             }

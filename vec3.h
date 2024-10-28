@@ -1,8 +1,7 @@
 #ifndef VEC3_H
 #define VEC3_H
 
-#include <cmath>
-#include <iostream>
+#include "rtweekend.h"
 #include <cassert>
 
 #define IS_FLOAT_NONZERO(var) (var <= -0.00000001f || var >= 0.00000001f)
